@@ -18,7 +18,7 @@
                             <i class="fas fa-cogs"></i>
                             Edit
                         </a>
-                        <a href="javascript:void(0)" title="Delete Product" style="color: red" data-id="{{$product->id}}" onclick="swalDelete();" class="deleteButton">
+                        <a href="javascript:void(0)" title="Delete Product" style="color: red" data-id="{{$product->id}}" onclick="swalDelete();" class="deleteButton mr-3" >
                             <i class="fas fa-trash"></i>
                             Delete
                         </a>

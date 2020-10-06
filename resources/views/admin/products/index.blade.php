@@ -13,6 +13,9 @@
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">Responsive Hover Table</h3>
+                    <a href="{{route("admin.products.create")}}" class="btn btn-success float-right">
+                        <i class="fas fa-plus"></i> &nbsp;Add Product
+                    </a>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body table-responsive">

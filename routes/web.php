@@ -25,4 +25,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], fu
 
     Route::resource('products/categories', 'admin\CategoryController')->except(['edit', 'create']);
     Route::resource('/products', 'admin\ProductController');
+    Route::get('products/{id}/images', 'admin\ProductController@images')->name('products.images');
+    Route::post('products/{id}/images', 'admin\ProductController@imagesUpload')->name('products.images.upload');
+    Route::delete('products/{id}/images', 'admin\ProductController@imageRemove')->name('products.images.remove');
 });

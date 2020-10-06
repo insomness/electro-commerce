@@ -246,11 +246,6 @@ return [
                     'icon'    => 'fas fa-fw fa-list',
                 ],
                 [
-                    'text' => 'Add Product',
-                    'url'  => 'admin/products/create',
-                    'icon'    => 'fas fa-fw fa-plus',
-                ],
-                [
                     'text' => 'Categories',
                     'url'  => 'admin/products/categories',
                     'icon'    => 'fas fa-fw fa-tag',
@@ -374,7 +369,23 @@ return [
                 ],
             ],
         ],
+        'summernote' => [
+            'active' => true,
+            'files' => [
+                [
+                    'type' => 'css',
+                    'asset' => true,
+                    'location' => 'vendor\summernote\summernote-bs4.css',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'vendor\summernote\summernote-bs4.js',
+                ],
+            ]
+        ]
     ],
+
 
     /*
     |--------------------------------------------------------------------------
