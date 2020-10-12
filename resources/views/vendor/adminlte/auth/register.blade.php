@@ -18,19 +18,26 @@
         {{ csrf_field() }}
 
         {{-- Name field --}}
-        <div class="input-group mb-3">
-            <input type="text" name="name" class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}"
-                   value="{{ old('name') }}" placeholder="{{ __('adminlte::adminlte.full_name') }}" autofocus>
-            <div class="input-group-append">
-                <div class="input-group-text">
-                    <span class="fas fa-user {{ config('adminlte.classes_auth_icon', '') }}"></span>
+        <div class="mb-3 form-row">
+                <div class="col">
+                    <input type="text" name="first_name" class="form-control {{ $errors->has('first_name') ? 'is-invalid' : '' }}"
+                   value="{{ old('first_name') }}" placeholder="{{ __('adminlte::adminlte.first_name') }}" autofocus>
+                    @if($errors->has('first_name'))
+                        <div class="invalid-feedback">
+                            <strong>{{ $errors->first('first_name') }}</strong>
+                        </div>
+                    @endif
                 </div>
-            </div>
-            @if($errors->has('name'))
-                <div class="invalid-feedback">
-                    <strong>{{ $errors->first('name') }}</strong>
+
+                <div class="col">
+                    <input type="text" name="last_name" class="form-control {{ $errors->has('last_name') ? 'is-invalid' : '' }}"
+                   value="{{ old('last_name') }}" placeholder="{{ __('adminlte::adminlte.last_name') }}" autofocus>
+                    @if($errors->has('last_name'))
+                        <div class="invalid-feedback">
+                            <strong>{{ $errors->first('last_name') }}</strong>
+                        </div>
+                    @endif
                 </div>
-            @endif
         </div>
 
         {{-- Email field --}}

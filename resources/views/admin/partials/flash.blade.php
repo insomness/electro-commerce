@@ -17,7 +17,6 @@
             toast: true,
             position: 'top-end',
             showConfirmButton: false,
-            timer: 5000,
             timerProgressBar: true,
             didOpen: (toast) => {
                 toast.addEventListener('mouseenter', Swal.stopTimer)
@@ -40,7 +39,6 @@
         toast: true,
         position: 'top-end',
         showConfirmButton: false,
-        timer: 5000,
         timerProgressBar: true,
         didOpen: (toast) => {
             toast.addEventListener('mouseenter', Swal.stopTimer)
@@ -50,7 +48,7 @@
 
         Toast.fire({
             icon: 'error',
-            title: '{{session("success")}}'
+            title: '{{session("error")}}'
         })
     </script>
     @endpush

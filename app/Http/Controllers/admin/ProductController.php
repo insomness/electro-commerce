@@ -11,10 +11,10 @@ use App\Models\ProductImage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
-use DataTables;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
+use Yajra\DataTables\Facades\DataTables;
 
 class ProductController extends Controller
 {
@@ -94,6 +94,7 @@ class ProductController extends Controller
     {
         $params = $request->except('_token');
         $params['price'] = cleanNumber($request->price);
+        $params['weight'] = cleanNumber($request->weight);
         $params['slug'] = Str::slug($params['name']);
 
         $product = DB::transaction(
@@ -142,6 +143,7 @@ class ProductController extends Controller
     {
         $params = $request->except('_token');
         $params['price'] = cleanNumber($request->price);
+        $params['weight'] = cleanNumber($request->weight);
         $params['slug'] = Str::slug($params['name']);
 
         $product = Product::findOrFail($id);

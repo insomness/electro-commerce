@@ -252,6 +252,34 @@ return [
                 ],
             ],
         ],
+        [
+            'text' => 'Orders',
+            'icon' => 'fas fa-fw fa-shopping-cart',
+            'submenu' => [
+                [
+                    'text' => 'Orders',
+                    'url' => 'admin/orders',
+                ],
+                [
+                    'text' => 'Trashed',
+                    'url' => 'admin/orders/trashed',
+                ],
+                [
+                    'text' => 'Shipment',
+                    'url' => 'admin/shipments'
+                ],
+            ],
+        ],
+        [
+            'text' => 'Reports',
+            'icon' => 'fas fa-fw fa-chart-bar',
+            'submenu' => [
+                [
+                    'text' => 'Revenue',
+                    'url' => 'admin/reports/revenue',
+                ],
+            ],
+        ],
     ],
 
     /*
@@ -344,16 +372,6 @@ return [
                 ],
             ],
         ],
-        'MyScripts' => [
-            'active' => true,
-            'files' => [
-                [
-                    'type' => 'js',
-                    'asset' => true,
-                    'location' => 'vendor/adminlte/dist/js/myScripts.js',
-                ],
-            ],
-        ],
         'Pace' => [
             'active' => false,
             'files' => [
@@ -369,6 +387,21 @@ return [
                 ],
             ],
         ],
+        'datepicker' => [
+            'active' => true,
+            'files' => [
+                [
+                    'type' => 'js',
+                    'asset' => false,
+                    'location' => '//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js',
+                ],
+                [
+                    'type' => 'css',
+                    'asset' => false,
+                    'location' => '//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css',
+                ],
+            ]
+        ],
         'summernote' => [
             'active' => true,
             'files' => [
@@ -383,7 +416,17 @@ return [
                     'location' => 'vendor\summernote\summernote-bs4.js',
                 ],
             ]
-        ]
+        ],
+        'MyScripts' => [
+            'active' => true,
+            'files' => [
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'vendor/adminlte/dist/js/myScripts.js',
+                ],
+            ],
+        ],
     ],
 
 

@@ -48,6 +48,10 @@
                         <th>Price</th>
                         <td>{{formatRupiah($product->price)}}</td>
                     </tr>
+                    <tr>
+                        <th>Weight</th>
+                        <td>{{$product->weight}} gram</td>
+                    </tr>
                     <tr class="">
                         <th>Status</th>
                         @if($product->status == 1)

@@ -42,6 +42,32 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Server Key Midtrans
+    |--------------------------------------------------------------------------
+    |
+    | This value determines theme on your application.
+    | Set this in your ".env" file.
+    |
+    */
+
+    'midtrans_server_key' => env('MIDTRANS_SERVER_KEY'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Raja ongkir api
+    |--------------------------------------------------------------------------
+    |
+    | This value determines api for rajaongkir on your application.
+    | Set this in your ".env" file.
+    |
+    */
+
+    'rajaongkir_api_key' => env('RAJAONGKIR_API_KEY'),
+    'rajaongkir_base_url' => env('RAJAONGKIR_BASE_URL'),
+    'rajaongkir_origin' => env('RAJAONGKIR_ORIGIN'),
+
+    /*
+    |--------------------------------------------------------------------------
     | Application Debug Mode
     |--------------------------------------------------------------------------
     |

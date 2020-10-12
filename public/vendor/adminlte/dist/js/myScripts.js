@@ -1,6 +1,27 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 // fetch data like ajax
+$(".datepicker").datepicker({
+    format: "yyyy-mm-dd"
+});
+
+$(".deleteButton").on("click", function() {
+    const id = $(this).data("id");
+    Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+    }).then(result => {
+        if (result.isConfirmed) {
+            document.getElementById("delete-form-" + id).submit();
+        }
+    });
+});
+
 async function sendData(url = "", method = "GET", data = {}) {
     const response = await fetch(url, {
         method: method,

@@ -20,6 +20,7 @@ class CreateProductsTable extends Migration
             $table->string('slug');
             $table->foreignId('category_id')->nullable()->constrained('categories');
             $table->decimal('price', 19, 0);
+            $table->decimal('weight');
             $table->text('description');
             $table->integer('status');
             $table->timestamps();

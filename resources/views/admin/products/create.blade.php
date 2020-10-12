@@ -27,9 +27,15 @@
                     {!! Form::label('name', 'Name') !!}
                     {!! Form::text('name', old('name'), ['class' => 'form-control', 'placeholder' => 'ROG Strix G G531GD', 'required']) !!}
                 </div>
-                <div class="form-group">
-                    {!! Form::label('price', 'Price') !!}
-                    {!! Form::text('price', old('price'), ['class' => 'form-control', 'placeholder' => '1500000','required', 'id' => 'price']) !!}
+                <div class="form-row">
+                    <div class="col-7">
+                        {!! Form::label('price', 'Price') !!}
+                        {!! Form::text('price', old('price'), ['class' => 'form-control', 'placeholder' => '1500000','required', 'id' => 'price']) !!}
+                    </div>
+                    <div class="col">
+                        {!! Form::label('weight', 'Weight (g)') !!}
+                        {!! Form::text('weight', old('weight'), ['class' => 'form-control', 'placeholder' => '1000','required', 'id' => 'weight']) !!}
+                    </div>
                 </div>
                 <div class="form-group">
                     {!! Form::label('category_id', 'Category') !!}

@@ -46,7 +46,7 @@
             </div>
             <!-- /.card-body -->
             <div class="card-footer d-flex justify-content-end ">
-                <a href="{{URL::previous()}}" class="btn btn-flat btn-secondary mr-2">
+                <a href="{{route('admin.products.index')}}" class="btn btn-flat btn-secondary mr-2">
                     <i class="fas fa-long-arrow-alt-left"></i>
                 Back
                 </a>

@@ -1,0 +1,177 @@
+<div class="login">
+    <div class="login-form-container">
+        <div class="login-form">
+            <form
+                method="POST"
+                action="http://127.0.0.1:8001/profile"
+                accept-charset="UTF-8"
+            >
+                <input
+                    name="_token"
+                    type="hidden"
+                    value="59W9EnZpRnPvwYniov8PIid0ZL6vzuhHHo0pXPon"
+                />
+                <input
+                    type="hidden"
+                    name="_token"
+                    value="59W9EnZpRnPvwYniov8PIid0ZL6vzuhHHo0pXPon"
+                />
+                <div class="form-group row">
+                    <div class="col-md-6">
+                        <input
+                            class="form-control"
+                            placeholder="First name"
+                            required=""
+                            name="first_name"
+                            type="text"
+                            value="Zoie"
+                        />
+                    </div>
+                    <div class="col-md-6">
+                        <input
+                            class="form-control"
+                            placeholder="Last name"
+                            required=""
+                            name="last_name"
+                            type="text"
+                            value="Turcotte"
+                        />
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-12">
+                        <input
+                            placeholder="Company"
+                            name="company"
+                            type="text"
+                        />
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-12">
+                        <input
+                            required=""
+                            placeholder="Home number and street name"
+                            name="address1"
+                            type="text"
+                        />
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-12">
+                        <input
+                            placeholder="Apartment, suite, unit etc. (optional)"
+                            name="address2"
+                            type="text"
+                        />
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-6">
+                        <select
+                            id="user-province-id"
+                            required=""
+                            name="province_id"
+                            ><option selected="selected" value=""
+                                >- Please Select - </option
+                            ><option value="1">BALI</option
+                            ><option value="2">BANGKA BELITUNG</option
+                            ><option value="3">BANTEN</option
+                            ><option value="4">BENGKULU</option
+                            ><option value="5">DI YOGYAKARTA</option
+                            ><option value="6">DKI JAKARTA</option
+                            ><option value="7">GORONTALO</option
+                            ><option value="8">JAMBI</option
+                            ><option value="9">JAWA BARAT</option
+                            ><option value="10">JAWA TENGAH</option
+                            ><option value="11">JAWA TIMUR</option
+                            ><option value="12">KALIMANTAN BARAT</option
+                            ><option value="13">KALIMANTAN SELATAN</option
+                            ><option value="14">KALIMANTAN TENGAH</option
+                            ><option value="15">KALIMANTAN TIMUR</option
+                            ><option value="16">KALIMANTAN UTARA</option
+                            ><option value="17">KEPULAUAN RIAU</option
+                            ><option value="18">LAMPUNG</option
+                            ><option value="19">MALUKU</option
+                            ><option value="20">MALUKU UTARA</option
+                            ><option value="21"
+                                >NANGGROE ACEH DARUSSALAM (NAD)</option
+                            ><option value="22"
+                                >NUSA TENGGARA BARAT (NTB)</option
+                            ><option value="23"
+                                >NUSA TENGGARA TIMUR (NTT)</option
+                            ><option value="24">PAPUA</option
+                            ><option value="25">PAPUA BARAT</option
+                            ><option value="26">RIAU</option
+                            ><option value="27">SULAWESI BARAT</option
+                            ><option value="28">SULAWESI SELATAN</option
+                            ><option value="29">SULAWESI TENGAH</option
+                            ><option value="30">SULAWESI TENGGARA</option
+                            ><option value="31">SULAWESI UTARA</option
+                            ><option value="32">SUMATERA BARAT</option
+                            ><option value="33">SUMATERA SELATAN</option
+                            ><option value="34">SUMATERA UTARA</option></select
+                        >
+                    </div>
+                    <div class="col-md-6">
+                        <select id="user-city-id" required="" name="city_id"
+                            ><option value="">- Please Select -</option
+                            ><option value="19">KOTA BALIKPAPAN</option
+                            ><option value="66">KABUPATEN BERAU</option
+                            ><option value="89">KOTA BONTANG</option
+                            ><option value="214">KABUPATEN KUTAI BARAT</option
+                            ><option value="215"
+                                >KABUPATEN KUTAI KARTANEGARA</option
+                            ><option value="216">KABUPATEN KUTAI TIMUR</option
+                            ><option value="341">KABUPATEN PASER</option
+                            ><option value="354"
+                                >KABUPATEN PENAJAM PASER UTARA</option
+                            ><option value="387">KOTA SAMARINDA</option></select
+                        >
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-6">
+                        <input
+                            required=""
+                            placeholder="Postcode"
+                            name="postcode"
+                            type="number"
+                        />
+                    </div>
+                    <div class="col-md-6">
+                        <input
+                            required=""
+                            placeholder="Phone"
+                            name="phone"
+                            type="text"
+                        />
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-12">
+                        <input
+                            class="form-control"
+                            placeholder="Email"
+                            required=""
+                            name="email"
+                            type="email"
+                            value="schamberger.alfredo@example.com"
+                        />
+                    </div>
+                </div>
+                <div class="button-box">
+                    <button type="submit" class="default-btn floatright">
+                        Update Profile
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
