@@ -12,6 +12,18 @@ class User extends Authenticatable
     use Notifiable;
     use HasRoles;
 
+    public function adminlte_image()
+    {
+        return 'https://picsum.photos/300/300';
+    }
+
+
+    public function adminlte_desc()
+    {
+        return "{$this->first_name} {$this->last_name}";
+    }
+
+
     /**
      * The attributes that are mass assignable.
      *

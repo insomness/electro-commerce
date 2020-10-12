@@ -38,6 +38,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth', 'na
     Route::put("shipments/{id}/update", 'ShipmentController@update')->name('shipments.update');
 
     Route::get('reports/revenue', 'ReportController@revenue')->name('revenue');
+
+    Route::resource('roles', 'RoleController');
+    Route::resource('users', 'UserController');
 });
 
 Auth::routes();
@@ -71,7 +74,3 @@ Route::get('payments/unfinish', 'PaymentController@unfinish');
 
 Route::get('profiles', 'Auth\ProfileController@index');
 Route::post('profiles', 'Auth\ProfileController@update');
-
-Route::get('coba', function () {
-    dispatch(new SendEmailOrderReceived([], Auth::user()));
-});

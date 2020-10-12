@@ -65,10 +65,10 @@ return [
     */
 
     'usermenu_enabled' => true,
-    'usermenu_header' => false,
-    'usermenu_header_class' => 'bg-primary',
-    'usermenu_image' => false,
-    'usermenu_desc' => false,
+    'usermenu_header' => true,
+    'usermenu_header_class' => 'color-secondary',
+    'usermenu_image' => true,
+    'usermenu_desc' => true,
     'usermenu_profile_url' => false,
 
     /*
@@ -277,6 +277,20 @@ return [
                 [
                     'text' => 'Revenue',
                     'url' => 'admin/reports/revenue',
+                ],
+            ],
+        ],
+        [
+            'text' => 'Users',
+            'icon' => 'fas fa-fw fa-users',
+            'submenu' => [
+                [
+                    'text' => 'Users',
+                    'url' => 'admin/users',
+                ],
+                [
+                    'text' => 'Role & Permission',
+                    'url' => 'admin/roles',
                 ],
             ],
         ],
