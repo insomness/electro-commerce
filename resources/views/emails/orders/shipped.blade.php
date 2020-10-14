@@ -9,8 +9,8 @@ Your order details are shown below for your reference:
 @component('mail::table')
 | Product       | Quantity      | Price  |
 | ------------- |:-------------:| --------:|
-@foreach ($order->orderItems as $item)
-| {{ $item->name }}      |  {{ $item->qty }}      | {{ formatRupiah($item->sub_total) }}      |
+@foreach ($order->products as $item)
+| {{ $item->name }}      |  {{ $item->pivot->qty }}      | {{ formatRupiah($item->pivot->sub_total) }}      |
 @endforeach
 | &nbsp;         | <strong>Sub total</strong> | {{ formatRupiah($order->base_total_price) }} |
 | &nbsp;         | Tax (10%)     | {{ formatRupiah($order->tax_amount) }} |

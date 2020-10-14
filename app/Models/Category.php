@@ -21,6 +21,7 @@ class Category extends Model
             $category->products = Product::whereHas('category', function ($q) use ($category) {
                 $q->where('id', $category->id);
             })
+                ->active()
                 ->take(5)
                 ->latest()
                 ->with(['category', 'productImages'])

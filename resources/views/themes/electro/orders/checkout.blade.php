@@ -108,7 +108,7 @@
                         @endforeach
                     </div>
                     <div class="order-col">
-                        <div><strong>Tax</strong></div>
+                        <div><strong>Tax(10%)</strong></div>
                         <div>{{formatRupiah(\Cart::getCondition('TAX 10%')->getCalculatedValue(\Cart::getSubTotal()))}}</div>
                     </div>
                     <div class="order-col">

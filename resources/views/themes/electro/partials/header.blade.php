@@ -30,6 +30,11 @@
                                     Profiles
                                 </a>
                             </li>
+                            @if(Auth::user()->hasRole('Admin'))
+                            <li>
+                                <a href="{{url('admin/products')}}" style="color: #d10024">Admin Dashboard</a>
+                            </li>
+                            @endif
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 @csrf
                             </form>

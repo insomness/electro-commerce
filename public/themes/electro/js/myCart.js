@@ -15,12 +15,15 @@ $(document).on({
 
 $(".add-to-cart-btn").on("click", function() {
     const productId = $(this).data("productid");
+    const url = "/carts";
+    const quantity = $("#cart-quantity").val();
     $.ajax({
-        url: "carts",
+        url: url,
         dataType: "json",
         type: "POST",
         data: {
-            productId: productId
+            productId: productId,
+            quantity: quantity
         },
         headers: {
             "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
@@ -33,8 +36,9 @@ $(".add-to-cart-btn").on("click", function() {
 
 $(".cart-list").on("click", ".product-widget .delete", function() {
     const productId = $(".product-widget").data("id");
+    const url = "/carts";
     $.ajax({
-        url: "carts",
+        url: url,
         type: "DELETE",
         data: {
             productId: productId

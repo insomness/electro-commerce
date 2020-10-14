@@ -32,6 +32,7 @@
 		<script src="{{asset("themes/electro/js/slick.min.js")}}"></script>
 		<script src="{{asset("themes/electro/js/nouislider.min.js")}}"></script>
 		<script src="{{asset("themes/electro/js/jquery.zoom.min.js")}}"></script>
+        <script src="{{asset("themes/electro/js/wNumb.min.js")}}"></script>
         <script src="{{asset("themes/electro/js/main.js")}}"></script>
         <script src="{{asset("themes/electro/js/myCart.js")}}"></script>
         <script src="{{asset("themes/electro/js/jquery.countdown.min.js")}}"></script>

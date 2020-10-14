@@ -17,7 +17,7 @@
 
 @push('js')
 <script>
-    $('#clock').countdown('2020/10/10').on('update.countdown', function(event) {
+    $('#clock').countdown('2020/11/10').on('update.countdown', function(event) {
     const $this = $(this).html(event.strftime(
         `<li>
             <div>

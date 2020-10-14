@@ -72,38 +72,22 @@
                 <!-- aside Widget -->
                 <div class="aside">
                     <h3 class="aside-title">Price</h3>
+                    {!! Form::open(['method' => 'get']) !!}
                     <div class="price-filter">
                         <div id="price-slider"></div>
                         <div class="input-number price-min">
-                            <input id="price-min" type="number">
-                            <span class="qty-up">+</span>
-                            <span class="qty-down">-</span>
+                            <input id="price-min" type="text" name="price-min" class="input">
                         </div>
                         <span>-</span>
-                        <div class="input-number price-max">
-                            <input id="price-max" type="number">
-                            <span class="qty-up">+</span>
-                            <span class="qty-down">-</span>
+                        <div class="input-number price-max" style="margin-bottom: 10px">
+                            <input id="price-max" type="text" name="price-max" class="input">
                         </div>
+                        {!! Form::submit('Search', ['class' => 'primary-btn order-submit']) !!}
                     </div>
+                    {!! Form::close() !!}
                 </div>
                 <!-- /aside Widget -->
 
-                <!-- aside Widget -->
-                <div class="aside">
-                    <h3 class="aside-title">Top selling</h3>
-                    <div class="product-widget">
-                        <div class="product-img">
-                            <img src="./img/product01.png" alt="">
-                        </div>
-                        <div class="product-body">
-                            <p class="product-category">Category</p>
-                            <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                            <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                        </div>
-                    </div>
-                </div>
-                <!-- /aside Widget -->
             </div>
             <!-- /ASIDE -->
 
@@ -112,73 +96,52 @@
                 <!-- store top filter -->
                 <div class="store-filter clearfix">
                     <div class="store-sort">
-                        <label>
-                            Sort By:
-                            <select class="input-select">
-                                <option value="0">Popular</option>
-                                <option value="1">Position</option>
-                            </select>
-                        </label>
+                    <label>Sort By : </label>
+                        {{ Form::select('sort', $sorts , $selectedSort ,array('onChange' => 'this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);', 'class' => 'input-select')) }}
 
                         <label>
                             Show:
-                            <select class="input-select">
-                                <option value="0">20</option>
-                                <option value="1">50</option>
-                            </select>
                         </label>
+                        <select class="input-select" id="pagination">
+                            <option value="10" @if($items == 10) selected @endif >10</option>
+                            <option value="25" @if($items == 25) selected @endif >25</option>
+                            <option value="50" @if($items == 50) selected @endif >50</option>
+                        </select>
                     </div>
-                    <ul class="store-grid">
-                        <li class="active"><i class="fa fa-th"></i></li>
-                        <li><a href="#"><i class="fa fa-th-list"></i></a></li>
-                    </ul>
                 </div>
                 <!-- /store top filter -->
 
                 <!-- store products -->
                 <div class="row">
                     <!-- product -->
+                    @foreach ($products as $product)
                     <div class="col-md-4 col-xs-6">
                         <div class="product">
                             <div class="product-img">
-                                <img src="./img/product01.png" alt="">
+                                <img src="{{asset('storage/'. $product->productImages[0]->path)}}" alt="">
                             </div>
                             <div class="product-body">
-                                <p class="product-category">Category</p>
-                                <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                                <div class="product-rating">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                </div>
+                                <p class="product-category">{{$product->category->name}}</p>
+                                <h3 class="product-name"><a href="/products/{{$product->slug}}">{{$product->name}}</a></h3>
+                                <h4 class="product-price">Rp. {{number_format($product->price, null ,',','.')}}</h4>
                                 <div class="product-btns">
                                     <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
-                                    <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
                                     <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
                                 </div>
                             </div>
                             <div class="add-to-cart">
-                                <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+                                <button class="add-to-cart-btn" data-productId="{{$product->id}}"><i class="fa fa-shopping-cart"></i> add to cart</button>
                             </div>
                         </div>
                     </div>
+                    @endforeach
                     <!-- /product -->
                 </div>
                 <!-- /store products -->
 
                 <!-- store bottom filter -->
                 <div class="store-filter clearfix">
-                    <span class="store-qty">Showing 20-100 products</span>
-                    <ul class="store-pagination">
-                        <li class="active">1</li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-                    </ul>
+                    {{ $products->links() }}
                 </div>
                 <!-- /store bottom filter -->
             </div>
@@ -190,3 +153,11 @@
 </div>
 
 @endsection
+
+@push('js')
+<script>
+    document.getElementById('pagination').onchange = function() {
+        window.location = "/products?items=" + this.value;
+    };
+</script>
+@endpush

@@ -1,6 +1,8 @@
 <?php
 
 use App\Jobs\SendEmailOrderReceived;
+use App\Jobs\SendEmailOrderShipped;
+use App\Models\Shipment;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -15,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth', 'namespace' => 'admin'], function () {
+Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'role:Admin'], 'namespace' => 'admin'], function () {
     Route::resource('products/categories', 'CategoryController')->except(['edit', 'create']);
     Route::resource('/products', 'ProductController');
 
@@ -74,3 +76,8 @@ Route::get('payments/unfinish', 'PaymentController@unfinish');
 
 Route::get('profiles', 'Auth\ProfileController@index');
 Route::post('profiles', 'Auth\ProfileController@update');
+
+Route::get('/testss', function () {
+    $shipment = Shipment::findOrFail(17);
+    SendEmailOrderShipped::dispatch($shipment->order);
+});

@@ -42,7 +42,7 @@
                                     </div>
                                     <div class="product-body">
                                         <p class="product-category">{{$product->category->name}}</p>
-                                        <h3 class="product-name"><a href="#">{{$product->name}}</a></h3>
+                                        <h3 class="product-name"><a href="products/{{$product->slug}}">{{$product->name}}</a></h3>
                                         <h4 class="product-price">Rp. {{number_format($product->price, null ,',','.')}}</h4>
                                         <div class="product-btns">
                                             <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
