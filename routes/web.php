@@ -80,8 +80,3 @@ Route::get('payments/unfinish', 'PaymentController@unfinish');
 
 Route::get('profiles', 'Auth\ProfileController@index');
 Route::post('profiles', 'Auth\ProfileController@update');
-
-Route::get('/testss', function () {
-    $shipment = Shipment::findOrFail(17);
-    SendEmailOrderShipped::dispatch($shipment->order);
-});

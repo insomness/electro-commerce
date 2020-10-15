@@ -35,7 +35,7 @@ class ProductController extends Controller
     public function index(Request $request)
     {
 
-        $products = Product::active();
+        $products = Product::with(['productImages', 'category', 'ratings'])->active();
 
         $products = $this->_filterProductsByPriceRange($products, $request);
         $products = $this->_sortProducts($products, $request);
@@ -114,7 +114,7 @@ class ProductController extends Controller
      */
     public function show($slug)
     {
-        $product = Product::active()->where('slug', $slug)->first();
+        $product = Product::with(['category', 'productImages'])->active()->where('slug', $slug)->first();
 
         if (!$product) {
             return redirect('products');
