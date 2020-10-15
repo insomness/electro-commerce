@@ -4,12 +4,17 @@ namespace App\Http\Controllers\front;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
+use willvincent\Rateable\Rateable;
 
 class ProductController extends Controller
 {
+
+    use Rateable;
 
     public function __construct()
     {
@@ -119,6 +124,32 @@ class ProductController extends Controller
 
         $this->data['product'] = $product;
 
+        if (Auth::check()) {
+            $this->data['isUserHasBought'] = $product->orders()->where([
+                'user_id' => Auth::user()->id,
+                'payment_status' => Order::PAID
+            ])->first();
+        }
+
         return $this->loadTheme('products.show', $this->data);
+    }
+
+    public function addReview(Request $request, $id)
+    {
+        $user_id = Auth::user()->id;
+
+        $product = Product::find($id);
+        $data = $product->orders()->where([
+            'user_id' => $user_id,
+            'payment_status' => Order::PAID
+        ])->get();
+
+        if ($data->count() < 0) {
+            return redirect('/');
+        }
+
+        $product->rateOnce($request->rating, $request->comment);
+
+        return redirect()->route('products.show', $product->slug);
     }
 }

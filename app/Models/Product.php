@@ -2,10 +2,15 @@
 
 namespace App\Models;
 
+use willvincent\Rateable\Rateable;
+
 use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
+
+    use Rateable;
+
     protected $guarded = [
         'category'
     ];
@@ -28,6 +33,11 @@ class Product extends Model
     public function productImages()
     {
         return $this->hasMany(ProductImage::class);
+    }
+
+    public function orders()
+    {
+        return $this->belongsToMany(Order::class, 'order_items');
     }
 
     /*

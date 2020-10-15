@@ -50,6 +50,8 @@ Auth::routes();
 Route::get('/', 'Front\HomeController@index');
 Route::get('/products', 'front\ProductController@index');
 Route::get('/products/{slug}', 'Front\ProductController@show')->name('products.show');
+Route::post('/products/{id}/review', 'Front\ProductController@addReview');
+
 
 // cart
 Route::get('/carts', 'Front\CartController@index')->name('carts');

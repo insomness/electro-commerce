@@ -35,14 +35,28 @@
 						<div class="product-details">
 							<h2 class="product-name">{{$product->name}}</h2>
 							<div>
-								<h3 class="product-price">{{formatRupiah($product->price)}}</h3>
-								<span class="product-available">
-                                    @if ($product->status == 1)
-                                        In Stock
-                                    @else
-                                        Out of Stock
-                                    @endif
-                                </span>
+                                <div>
+                                    <div class="product-rating">
+                                        @for ($i = 0; $i < 5; $i++)
+                                            @if ($i < number_format($product->averageRating, 2))
+                                                <i class="fa fa-star"></i>
+                                            @else
+                                                <i class="fa fa-star-o"></i>
+                                            @endif
+                                        @endfor
+                                    </div>
+                                    <a class="review-link" href="#">{{$product->timesRated()}} Review(s)  @if ($isUserHasBought ?? '') | Add your review< @endif </a>
+                                </div>
+                                <div>
+                                    <h3 class="product-price">{{formatRupiah($product->price)}}</h3>
+                                    <span class="product-available">
+                                        @if ($product->status == 1)
+                                            In Stock
+                                        @else
+                                            Out of Stock
+                                        @endif
+                                    </span>
+                                </div>
 							</div>
 							<p>{!! $product->description !!}</p>
 
@@ -86,7 +100,7 @@
 							<!-- product tab nav -->
 							<ul class="tab-nav">
 								<li class="active"><a data-toggle="tab" href="#tab1">Description</a></li>
-								<li><a data-toggle="tab" href="#tab2">Details</a></li>
+								<li><a data-toggle="tab" href="#tab2">Reviews</a></li>
 							</ul>
 							<!-- /product tab nav -->
 
@@ -102,15 +116,84 @@
 								</div>
 								<!-- /tab1  -->
 
-								<!-- tab2  -->
-								<div id="tab2" class="tab-pane fade in">
+                                <div id="tab2" class="tab-pane fade in">
 									<div class="row">
-										<div class="col-md-12">
-                                            <p>{!! $product->description !!}</p>
+										<!-- Rating -->
+										<div class="col-md-3">
+											<div id="rating">
+												<div class="rating-avg">
+													<span>{{number_format($product->averageRating, 2)}}</span>
+													<div class="rating-stars">
+														@for ($i = 0; $i < 5; $i++)
+                                                            @if ($i < number_format($product->averageRating, 2))
+                                                                <i class="fa fa-star"></i>
+                                                            @else
+                                                                <i class="fa fa-star-o"></i>
+                                                            @endif
+                                                        @endfor
+													</div>
+												</div>
+												<ul class="rating">
+                                                    @for ($i = 5; $i > 0; $i--)
+                                                        <li>
+                                                            <div class="rating-stars">
+                                                                @for ($j = 0; $j < $i; $j++)
+                                                                    <i class="fa fa-star"></i>
+                                                                @endfor
+                                                            </div>
+                                                            <div class="rating-progress">
+                                                                <div style="width: {{$product->ratingPercentByValue($i)}}%;"></div>
+                                                            </div>
+                                                            <span class="sum">{{$product->ratings()->where('rating', $i)->get()->count()}}</span>
+                                                        </li>
+                                                    @endfor
+												</ul>
+											</div>
 										</div>
+										<!-- /Rating -->
+
+										<!-- Reviews -->
+										<div class="col-md-6">
+											<div id="reviews">
+												<ul class="reviews">
+                                                    @foreach ($product->ratings as $rating)
+													<li>
+														<div class="review-heading">
+															<h5 class="name">{{$rating->user->adminlte_desc()}}</h5>
+															<p class="date">{{$rating->created_at->format('D, M Y h:i A')}}</p>
+															<div class="review-rating">
+                                                                @for ($i = 0; $i < 5; $i++)
+                                                                    @if ($i < $rating->rating)
+                                                                        <i class="fa fa-star"></i>
+                                                                    @else
+                                                                        <i class="fa fa-star-o empty"></i>
+                                                                    @endif
+                                                                @endfor
+															</div>
+														</div>
+														<div class="review-body">
+															<p>{{$rating->comment}}</p>
+														</div>
+                                                    </li>
+                                                    @endforeach
+
+												</ul>
+											</div>
+										</div>
+										<!-- /Reviews -->
+
+                                        @if ($isUserHasBought ?? '')
+										<!-- Review Form -->
+										<div class="col-md-3">
+											<div id="review-form">
+                                                @include('themes.electro.products.review')
+											</div>
+										</div>
+                                        <!-- /Review Form -->
+                                        @endif
 									</div>
 								</div>
-								<!-- /tab2  -->
+
 							</div>
 							<!-- /product tab content  -->
 						</div>
