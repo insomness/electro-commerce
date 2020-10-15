@@ -84,7 +84,7 @@ class Controller extends BaseController
         $isCitiesFileExist = Storage::disk('local')->exists($citiesFilePath);
 
         if (!$isCitiesFileExist) {
-            $response = $this->rajaOngkirRequest('city', ['province' => $provinceId]);
+            $response = $this->rajaOngkirRequest('city', 'get', ['province' => $provinceId]);
             Storage::disk('local')->put($citiesFilePath, json_encode($response['rajaongkir']['results']));
         }
 

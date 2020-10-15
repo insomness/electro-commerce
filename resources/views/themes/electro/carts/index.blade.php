@@ -20,7 +20,9 @@
                         <td style="vertical-align: middle">
                             <strong>{{$cart->name}}</strong>
                             <br>
-                            <small>{!!$cart->associatedModel->description!!}</small>
+                            <small class="weight">
+                                Total Weight : {{$cart->associatedModel->weight * $cart->quantity / 1000 }} Kg<br>
+                            </small>
                         </td>
                         <td style="vertical-align: middle">
                             <a href='javascript:void(0)' onclick="document.getElementById('remove').submit()">Remove</a>
@@ -44,7 +46,7 @@
                     </tr>
                 @endforeach
             </table>
-            <a href="{{url('/orders/checkout')}}" class="primary-btn order-submit pull-right">Checkout</a>
+            <a href="{{url('/orders/checkout')}}" class="primary-btn order-submit pull-right checkout">Checkout</a>
         </div>
     </div>
 </div>
@@ -83,6 +85,14 @@ function cartList(data){
         let {cart} = data;
         $(`.cart-${cart.id} .price .amountofunit`).html('Rp. ' + numberWithCommas(cart.price * cart.quantity));
         $(`.product-widget[data-id=${cart.id}] .product-price .qty`).html(`${cart.quantity} x`);
+
+        if(cart.associatedModel.weight * cart.quantity / 1000 > 30){
+            $(`.cart-${cart.id} .weight`).html(`Exceed the quota limit, cannot continue payment`);
+            $(`.checkout`).css('display', 'none');
+        }else{
+            $(`.cart-${cart.id} .weight`).html(`Total Weight: ${cart.associatedModel.weight * cart.quantity / 1000} Kg`);
+            $(`.checkout`).css('display', '');
+        }
 }
 </script>
 @endpush

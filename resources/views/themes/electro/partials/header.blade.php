@@ -57,7 +57,7 @@
                 <div class="col-md-9">
                     <div class="header-logo">
                         <a href="{{ url('/') }}" class="logo">
-                            <img src="{{asset("themes/electro")}}/img/logo.png" alt="">
+                            <img src="{{asset("themes/electro")}}/img/logo.png" alt="" style="object-fit: cover;height: 90px;">
                         </a>
                     </div>
                 </div>

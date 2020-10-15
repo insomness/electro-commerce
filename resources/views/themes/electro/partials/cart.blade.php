@@ -1,4 +1,4 @@
-<div class="col-md-3 clearfix">
+<div class="col-md-3 clearfix" style="margin-top: 20px">
     <div class="header-ctn">
         <div>
             <a href="#">
