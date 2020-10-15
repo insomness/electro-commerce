@@ -3,13 +3,11 @@
 namespace App\Http\Controllers\front;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
 use App\Models\Order;
 use App\Models\Product;
+use App\Models\Rateable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Str;
-use willvincent\Rateable\Rateable;
 
 class ProductController extends Controller
 {

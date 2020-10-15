@@ -2,6 +2,8 @@
 
 use App\Jobs\SendEmailOrderReceived;
 use App\Jobs\SendEmailOrderShipped;
+use App\Mail\OrderReceived;
+use App\Models\Order;
 use App\Models\Shipment;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;

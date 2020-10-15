@@ -26,6 +26,9 @@ $(document).ready(function() {
                         `<option value=${city_id}>${city}</option>`
                     );
                 });
+            },
+            error: function($e){
+                alert($e);
             }
         });
     };
