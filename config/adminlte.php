@@ -243,12 +243,10 @@ return [
                 [
                     'text' => 'List Products',
                     'url'  => 'admin/products/',
-                    'icon'    => 'fas fa-fw fa-list',
                 ],
                 [
                     'text' => 'Categories',
                     'url'  => 'admin/products/categories',
-                    'icon'    => 'fas fa-fw fa-tag',
                 ],
             ],
         ],
