@@ -92,7 +92,7 @@ class OrderController extends Controller
         });
 
         if ($order) {
-            // \Cart::clear();
+            \Cart::clear();
             $this->_sendEmailOrderReceived($order);
 
             Session::flash('success', 'Thank you. Your order has been received!');
